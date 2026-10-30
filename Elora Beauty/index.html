@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÉLORA BEAUTY — The Art of Feeling Beautiful</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#faf6f1;--pink:#ead2d0;--rose:#bd8581;--brown:#59433f;--dark:#302421;--white:#fffdfb;--muted:#8b7770}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+.announcement{text-align:center;background:var(--dark);color:white;padding:10px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;background:#faf6f1ed;position:sticky;top:0;z-index:30;backdrop-filter:blur(15px);border-bottom:1px solid #e9dfd8}
+.logo{font-family:'Playfair Display',serif;font-size:27px;letter-spacing:4px}
+.logo span{color:var(--rose)}
+nav{display:flex;gap:30px;font-size:10px;letter-spacing:1.6px;text-transform:uppercase}
+nav a{transition:.3s}
+nav a:hover{color:var(--rose)}
+.header-actions{display:flex;align-items:center;gap:17px}
+.cart-button{background:none;border:1px solid #cdbbb2;padding:11px 15px;font-size:10px;letter-spacing:1px}
+.menu-toggle{display:none;border:0;background:none;font-size:25px}
+.hero{min-height:650px;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:55px 8%;gap:55px}
+.hero-copy{animation:slideIn .9s ease both}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--rose);text-transform:uppercase;margin-bottom:23px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(55px,6.5vw,92px);font-weight:400;line-height:1.05}
+.hero h1 em{color:var(--rose);font-weight:400}
+.hero-copy p{font-size:14px;line-height:2;color:var(--muted);max-width:390px;margin:26px 0 34px}
+.btn{display:inline-block;background:var(--dark);color:white;padding:17px 28px;font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--dark);transition:.35s}
+.btn:hover{background:var(--rose);border-color:var(--rose);transform:translateY(-3px)}
+.hero-image{height:550px;position:relative;animation:fadeIn 1.2s ease both}
+.hero-image img{width:100%;height:100%;object-fit:cover;border-radius:48% 48% 2px 2px}
+.hero-stamp{position:absolute;bottom:30px;left:-35px;background:var(--white);width:110px;height:110px;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:'Playfair Display',serif;font-size:15px;line-height:1.3;transform:rotate(-10deg);box-shadow:0 10px 35px #00000012}
+.marquee{background:var(--pink);padding:19px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:marquee 28s linear infinite}
+.marquee span{font-family:'Playfair Display',serif;font-style:italic;font-size:19px;margin:0 35px;color:#765854}
+.section{padding:100px 8%}
+.section-heading{text-align:center;margin-bottom:45px}
+.section-heading .eyebrow{margin-bottom:14px}
+.section-heading h2{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,54px);font-weight:400}
+.section-heading p{font-size:13px;color:var(--muted);margin-top:12px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.category{height:400px;position:relative;overflow:hidden;background:var(--pink)}
+.category img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.category:hover img{transform:scale(1.07)}
+.category-info{position:absolute;bottom:0;left:0;width:100%;padding:28px;color:white;background:linear-gradient(transparent,#241915bd)}
+.category-info h3{font-family:'Playfair Display',serif;font-size:29px;font-weight:400}
+.category-info a{font-size:10px;letter-spacing:2px;text-transform:uppercase;display:inline-block;margin-top:12px;border-bottom:1px solid white;padding-bottom:5px}
+.products-section{background:var(--white)}
+.filters{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:-15px 0 35px}
+.filter{background:transparent;border:1px solid #dfd3cb;padding:10px 18px;font-size:10px;letter-spacing:1px;text-transform:uppercase;transition:.3s}
+.filter.active,.filter:hover{background:var(--dark);color:white;border-color:var(--dark)}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.product-image{height:285px;position:relative;overflow:hidden;background:#f0e5dd}
+.product-image img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.product-card:hover .product-image img{transform:scale(1.06)}
+.product-tag{position:absolute;top:13px;left:13px;background:white;padding:7px 10px;font-size:9px;letter-spacing:1px;text-transform:uppercase}
+.product-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;margin:15px 0 6px}
+.product-card p{font-size:11px;color:var(--muted)}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:13px}
+.price{font-size:13px;font-weight:600}
+.add-btn{border:1px solid #cdbbb2;background:transparent;padding:9px 12px;font-size:9px;letter-spacing:1px;text-transform:uppercase;transition:.3s}
+.add-btn:hover{background:var(--dark);color:white}
+.story{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:75px}
+.story-image{height:510px}
+.story-image img{width:100%;height:100%;object-fit:cover}
+.story-copy h2{font-family:'Playfair Display',serif;font-size:clamp(38px,4.5vw,58px);font-weight:400;line-height:1.15}
+.story-copy p{font-size:13px;line-height:2.1;color:var(--muted);margin:22px 0}
+.campaign{min-height:440px;background:linear-gradient(90deg,#33231ed9,#33231e25),url('https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1800&q=85') center/cover;display:flex;align-items:center;padding:70px 10%;color:white}
+.campaign-copy{max-width:470px}
+.campaign h2{font-family:'Playfair Display',serif;font-size:clamp(42px,5vw,66px);font-weight:400;line-height:1.1}
+.campaign p{font-size:13px;line-height:2;margin:22px 0}
+.campaign .btn{background:white;color:var(--dark);border-color:white}
+.testimonials{background:#f1e4df}
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.quote{background:#fffaf7;padding:35px 28px}
+.stars{color:#b88770;letter-spacing:3px;font-size:13px}
+.quote blockquote{font-family:'Playfair Display',serif;font-size:20px;line-height:1.6;margin:20px 0}
+.quote small{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.newsletter{text-align:center;padding:95px 20px}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:45px;font-weight:400}
+.newsletter p{font-size:13px;color:var(--muted);margin:13px 0 25px}
+.newsletter form{display:flex;max-width:450px;margin:auto;border-bottom:1px solid #b9a59b}
+.newsletter input{flex:1;border:0;background:transparent;padding:15px;outline:none;font-size:12px}
+.newsletter button{background:var(--dark);color:white;border:0;padding:0 20px;font-size:10px;letter-spacing:1px}
+footer{background:var(--dark);color:white;padding:65px 8% 25px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:35px;padding-bottom:45px}
+.footer-brand .logo{font-size:26px}
+.footer-brand p{font-size:12px;line-height:2;color:#c5b4ad;max-width:260px;margin-top:18px}
+footer h4{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+footer ul{list-style:none}
+footer li{font-size:12px;color:#c5b4ad;margin-bottom:14px}
+footer a:hover{color:#e7bcb7}
+.copyright{border-top:1px solid #57433c;padding-top:22px;display:flex;justify-content:space-between;color:#bbaaa3;font-size:10px}
+.cart-panel{position:fixed;top:0;right:-430px;width:min(400px,100%);height:100vh;background:var(--white);z-index:60;padding:30px;box-shadow:-10px 0 40px #0002;transition:.4s;display:flex;flex-direction:column}
+.cart-panel.open{right:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:20px}
+.cart-head h3{font-family:'Playfair Display',serif;font-size:27px;font-weight:400}
+.close-cart{border:0;background:none;font-size:25px}
+.cart-items{flex:1;overflow:auto;padding:20px 0}
+.cart-item{display:flex;gap:15px;align-items:center;margin-bottom:20px}
+.cart-item img{width:65px;height:75px;object-fit:cover}
+.cart-item h4{font-family:'Playfair Display',serif;font-weight:400;font-size:17px}
+.cart-item p{font-size:12px;color:var(--muted);margin-top:5px}
+.remove{background:none;border:0;color:#a66;font-size:11px;margin-top:7px}
+.cart-total{border-top:1px solid #ddd;padding-top:20px}
+.total-row{display:flex;justify-content:space-between;margin-bottom:20px;font-size:14px}
+.checkout{width:100%;padding:16px;background:var(--dark);color:white;border:0;font-size:10px;letter-spacing:2px}
+.overlay{position:fixed;inset:0;background:#21171380;z-index:50;display:none}
+.overlay.show{display:block}
+.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,100px);background:var(--dark);color:white;padding:14px 24px;font-size:12px;z-index:80;transition:.4s}
+.toast.show{transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes slideIn{from{opacity:0;transform:translateX(-35px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:900px){
+ nav{gap:15px}.hero{padding:45px 6%;gap:30px}.hero-image{height:450px}
+ .product-grid{grid-template-columns:repeat(2,1fr)}
+ .categories{gap:12px}.category{height:320px}
+ .story{gap:35px}.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+ header{height:72px;padding:0 5%}
+ .menu-toggle{display:block}
+ nav{display:none;position:absolute;top:72px;left:0;width:100%;background:var(--cream);padding:25px;flex-direction:column;gap:22px;border-bottom:1px solid #ddd}
+ nav.open{display:flex}
+ .logo{font-size:22px}
+ .header-actions{gap:8px}.cart-button{padding:10px;font-size:9px}
+ .hero{grid-template-columns:1fr;padding:50px 7%;gap:30px}
+ .hero h1{font-size:65px}.hero-image{height:430px;margin-left:20px}
+ .hero-stamp{left:-25px;width:90px;height:90px}
+ .section{padding:75px 7%}
+ .categories{grid-template-columns:1fr;gap:17px}
+ .category{height:390px}
+ .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}
+ .product-image{height:210px}
+ .product-card h3{font-size:17px}
+ .product-bottom{align-items:flex-start;gap:7px;flex-direction:column}
+ .story{grid-template-columns:1fr;gap:30px}
+ .story-image{height:380px}
+ .campaign{padding:65px 8%;min-height:400px}
+ .quote-grid{grid-template-columns:1fr}
+ .newsletter h2{font-size:36px}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+ .copyright{gap:12px;flex-direction:column}
+}
+@media(max-width:380px){.product-grid{grid-template-columns:1fr}.product-image{height:300px}}
+</style>
+</head>
+<body>
+
+<div class="announcement">A little luxury for your everyday ritual — complimentary delivery on orders over $100</div>
+
+<header>
+<a class="logo" href="#">ÉLORA<span>.</span></a>
+<nav id="nav">
+<a href="#home">Home</a>
+<a href="#collections">Collections</a>
+<a href="#shop">Shop</a>
+<a href="#story">Our Story</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<button class="cart-button" onclick="toggleCart()">BAG (<span id="cart-count">0</span>)</button>
+<button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+</div>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="hero-copy">
+<div class="eyebrow">A new kind of skincare ritual</div>
+<h1>Beauty in every <em>little</em> detail.</h1>
+<p>Thoughtfully created skincare for the moments that belong to you. Discover a softer, more beautiful way to care for yourself.</p>
+<a class="btn" href="#shop">Discover the collection ↗</a>
+</div>
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=1000&q=85" alt="Luxury beauty skincare products">
+<div class="hero-stamp">A little<br>more love<br>for you ♡</div>
+</div>
+</section>
+
+<div class="marquee"><div class="marquee-track">
+<span>SKINCARE WITH INTENTION ✳</span><span>YOUR DAILY MOMENT OF LUXURY ✳</span><span>BEAUTY BEGINS WITH YOU ✳</span><span>SKINCARE WITH INTENTION ✳</span><span>YOUR DAILY MOMENT OF LUXURY ✳</span><span>BEAUTY BEGINS WITH YOU ✳</span>
+</div></div>
+
+<section class="section" id="collections">
+<div class="section-heading reveal">
+<div class="eyebrow">Explore ÉLORA</div>
+<h2>Your skin, your ritual.</h2>
+<p>Simple rituals. Beautiful results. A collection made for you.</p>
+</div>
+<div class="categories">
+<div class="category reveal">
+<img src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=800&q=85" alt="Skincare collection">
+<div class="category-info"><h3>Daily skincare</h3><a href="#shop">Explore collection ↗</a></div>
+</div>
+<div class="category reveal">
+<img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=800&q=85" alt="Beauty serum collection">
+<div class="category-info"><h3>Serum essentials</h3><a href="#shop">Explore collection ↗</a></div>
+</div>
+<div class="category reveal">
+<img src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=800&q=85" alt="Luxury moisturisers">
+<div class="category-info"><h3>Body & glow</h3><a href="#shop">Explore collection ↗</a></div>
+</div>
+</div>
+</section>
+
+<section class="section products-section" id="shop">
+<div class="section-heading reveal">
+<div class="eyebrow">The ÉLORA edit</div>
+<h2>Our best-loved essentials.</h2>
+<p>Meet the little luxuries your routine has been waiting for.</p>
+</div>
+<div class="filters">
+<button class="filter active" data-filter="all">All products</button>
+<button class="filter" data-filter="cleanser">Cleansers</button>
+<button class="filter" data-filter="serum">Serums</button>
+<button class="filter" data-filter="moisturizer">Moisturisers</button>
+<button class="filter" data-filter="body">Body care</button>
+</div>
+<div class="product-grid" id="product-grid"></div>
+</section>
+
+<section class="section" id="story">
+<div class="story">
+<div class="story-image reveal">
+<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1000&q=85" alt="Beautiful skincare ritual">
+</div>
+<div class="story-copy reveal">
+<div class="eyebrow">A little about us</div>
+<h2>Because taking care of you is never a small thing.</h2>
+<p>ÉLORA was imagined around one simple belief: beauty should feel like a moment of care, not another thing on your to-do list.</p>
+<p>We celebrate thoughtful rituals, beautiful textures and the confidence that comes from making time for yourself.</p>
+<a href="#shop" class="btn">Discover our world ↗</a>
+</div>
+</div>
+</section>
+
+<section class="campaign">
+<div class="campaign-copy reveal">
+<div class="eyebrow" style="color:#f0c7c0">The everyday ritual</div>
+<h2>Make room for a little more you.</h2>
+<p>Slow down. Breathe in. Let your skincare routine become your favourite part of the day.</p>
+<a class="btn" href="#shop">Find your ritual ↗</a>
+</div>
+</section>
+
+<section class="section testimonials">
+<div class="section-heading reveal">
+<div class="eyebrow">Kind words</div>
+<h2>Love notes from our community.</h2>
+<p>Some of our favourite things are the stories you share.</p>
+</div>
+<div class="quote-grid">
+<div class="quote reveal"><div class="stars">★★★★★</div><blockquote>“Everything feels so thoughtfully made. My morning routine has become something I genuinely look forward to.”</blockquote><small>— A happy customer</small></div>
+<div class="quote reveal"><div class="stars">★★★★★</div><blockquote>“The packaging, the textures, the whole experience. It feels like a little luxury delivered to my door.”</blockquote><small>— A beauty lover</small></div>
+<div class="quote reveal"><div class="stars">★★★★★</div><blockquote>“A beautiful reminder to slow down and take care of myself. I love the whole ÉLORA experience.”</blockquote><small>— An ÉLORA friend</small></div>
+</div>
+</section>
+
+<section class="newsletter" id="contact">
+<div class="eyebrow">A note from us</div>
+<h2>Stay in the glow.</h2>
+<p>Join our little world for beauty notes, new arrivals and special treats.</p>
+<form id="newsletter-form">
+<input type="email" placeholder="Your email address" required>
+<button type="submit">JOIN US ↗</button>
+</form>
+</section>
+</main>
+
+<footer>
+<div class="footer-grid">
+<div class="footer-brand">
+<a class="logo" href="#">ÉLORA<span>.</span></a>
+<p>Thoughtful skincare. Beautiful rituals. A little more love for yourself, every single day.</p>
+</div>
+<div><h4>Explore</h4><ul><li><a href="#home">Home</a></li><li><a href="#collections">Collections</a></li><li><a href="#shop">Shop all</a></li><li><a href="#story">Our story</a></li></ul></div>
+<div><h4>Customer care</h4><ul><li><a href="#contact">Contact us</a></li><li><a href="#contact">Shipping</a></li><li><a href="#contact">Returns</a></li><li><a href="#contact">FAQs</a></li></ul></div>
+<div><h4>Follow along</h4><ul><li><a href="#">Instagram ↗</a></li><li><a href="#">Pinterest ↗</a></li><li><a href="#">TikTok ↗</a></li></ul></div>
+</div>
+<div class="copyright"><span>© 2026 ÉLORA BEAUTY. All rights reserved.</span><span>Made with love, for the love of beauty ♡</span></div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<aside class="cart-panel" id="cart-panel">
+<div class="cart-head"><h3>Your shopping bag</h3><button class="close-cart" onclick="toggleCart()">×</button></div>
+<div class="cart-items" id="cart-items"></div>
+<div class="cart-total">
+<div class="total-row"><span>Subtotal</span><strong id="cart-total">$0.00</strong></div>
+<button class="checkout" onclick="checkout()">CONTINUE TO CHECKOUT ↗</button>
+<p style="font-size:10px;color:#98877e;text-align:center;margin-top:12px">Demo store — checkout is not connected.</p>
+</div>
+</aside>
+<div class="toast" id="toast">Added to your bag ♡</div>
+
+<script>
+const products=[
+{id:1,name:"The Gentle Cleanser",type:"cleanser",desc:"A soft daily cleansing ritual",price:28,image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=600&q=85",tag:"BESTSELLER"},
+{id:2,name:"Rose Glow Serum",type:"serum",desc:"A silky glow-enhancing serum",price:42,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=85",tag:"NEW"},
+{id:3,name:"Cloud Nine Cream",type:"moisturizer",desc:"A comforting daily moisturiser",price:36,image:"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=600&q=85",tag:"FAVOURITE"},
+{id:4,name:"Velvet Body Oil",type:"body",desc:"A silky finishing touch",price:34,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=85",tag:""},
+{id:5,name:"Dew Drop Serum",type:"serum",desc:"A lightweight daily serum",price:39,image:"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=600&q=85",tag:"POPULAR"},
+{id:6,name:"Silk Touch Cleanser",type:"cleanser",desc:"A fresh, gentle face wash",price:25,image:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=85",tag:""},
+{id:7,name:"Petal Soft Cream",type:"moisturizer",desc:"A soft finishing moisturiser",price:32,image:"https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=600&q=85",tag:""},
+{id:8,name:"Golden Hour Lotion",type:"body",desc:"Everyday body care, elevated",price:30,image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=85",tag:""}
+];
+let cart=[];
+const grid=document.getElementById('product-grid');
+function renderProducts(filter='all'){
+grid.innerHTML='';
+products.filter(p=>filter==='all'||p.type===filter).forEach(p=>{
+const card=document.createElement('article');
+card.className='product-card reveal visible';
+card.innerHTML=`<div class="product-image"><img src="${p.image}" alt="${p.name}" loading="lazy">${p.tag?`<span class="product-tag">${p.tag}</span>`:''}</div><h3>${p.name}</h3><p>${p.desc}</p><div class="product-bottom"><span class="price">$${p.price.toFixed(2)}</span><button class="add-btn" onclick="addToCart(${p.id})">ADD TO BAG +</button></div>`;
+grid.appendChild(card);
+});
+}
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+document.querySelector('.filter.active').classList.remove('active');
+btn.classList.add('active');
+renderProducts(btn.dataset.filter);
+}));
+function addToCart(id){
+const item=cart.find(x=>x.id===id);
+if(item)item.qty++;
+else cart.push({...products.find(x=>x.id===id),qty:1});
+updateCart();showToast();
+}
+function removeFromCart(id){cart=cart.filter(x=>x.id!==id);updateCart()}
+function updateCart(){
+document.getElementById('cart-count').textContent=cart.reduce((s,x)=>s+x.qty,0);
+document.getElementById('cart-items').innerHTML=cart.length?cart.map(x=>`<div class="cart-item"><img src="${x.image}" alt="${x.name}"><div><h4>${x.name}</h4><p>$${x.price.toFixed(2)} × ${x.qty}</p><button class="remove" onclick="removeFromCart(${x.id})">REMOVE</button></div></div>`).join(''):'<p style="text-align:center;color:#8b7770;margin-top:50px;font-size:13px">Your bag is waiting for a little love ♡</p>';
+document.getElementById('cart-total').textContent='$'+cart.reduce((s,x)=>s+x.price*x.qty,0).toFixed(2);
+}
+function toggleCart(){
+document.getElementById('cart-panel').classList.toggle('open');
+document.getElementById('overlay').classList.toggle('show');
+}
+function toggleMenu(){document.getElementById('nav').classList.toggle('open')}
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+let toastTimer;
+function showToast(){
+const toast=document.getElementById('toast');
+toast.classList.add('show');
+clearTimeout(toastTimer);
+toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+}
+function checkout(){alert('Thank you for exploring ÉLORA BEAUTY! This is a portfolio demo, so checkout is not connected yet.')}
+document.getElementById('newsletter-form').addEventListener('submit',e=>{
+e.preventDefault();alert('Thank you for joining the ÉLORA community! This is a demo subscription form.');e.target.reset();
+});
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+renderProducts();
+updateCart();
+</script>
+</body>
+</html>
